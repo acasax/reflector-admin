@@ -1,0 +1,226 @@
+@import '../mixin';
+@import '../themes';
+
+.table-root {
+  border-color: #eee;
+  border-width: 0px;
+  width: 100%;
+
+  &.tbl-separator-horizontal {
+    .table-data-row {
+      border-bottom-width: 1px;
+      border-bottom-style: solid;
+      border-bottom-color: inherit;
+      }
+
+    .table-header-root {
+      border-bottom-width: 1px;
+      border-bottom-style: solid;
+      border-bottom-color: inherit;
+      @include default-application-gradient;
+      }
+    }
+
+  &.tbl-separator-vertical {
+    .table-data-cell:not(:last-child) {
+      border-right-width: 1px;
+      border-right-style: solid;
+      border-right-color: inherit;
+
+      }
+
+    .table-header-th:not(:last-child) {
+      border-right-width: 1px;
+      border-right-style: solid;
+      border-right-color: inherit;
+      }
+    }
+
+  &.tbl-separator-cell {
+    .table-data-cell {
+      border-right-width: 2px;
+      border-bottom-width: 1px;
+      border-right-style: solid;
+      border-bottom-style: solid;
+      border-right-color: inherit;
+      border-bottom-color: inherit;
+
+      &:hover {
+        border-right: 2px solid #0f3c53
+        }
+
+
+      &:last-child {
+        border-right-width: 0px;
+        }
+      }
+
+    .table-header-th {
+      border-right-width: 1px;
+      border-bottom-width: 1px;
+      border-right-style: solid;
+      border-bottom-style: solid;
+      border-right-color: inherit;
+      border-bottom-color: inherit;
+
+      &:last-child {
+        border-right-width: 0px;
+        }
+      }
+    }
+  }
+
+
+.table-header-tr {
+  @include application-gradient-grey;
+  color: #153153;
+  text-shadow: 1px 1px 1px white;
+  letter-spacing: 0.4px;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 12px;
+
+  }
+
+
+.table-cell-action {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+  min-width: 25px;
+  max-width: 70px;
+
+  svg {
+    cursor: pointer;
+    }
+  }
+
+
+.table-data-row {
+  cursor: pointer;
+
+  &:nth-child(even) {
+    background-color: rgba(158, 184, 195, 0.07);
+    }
+
+  &:hover {
+    background-color: rgba(158, 184, 195, 0.19);
+    }
+  &.selected {
+     background-color: rgba(107, 159, 179, 0.39);
+  }
+  &.editable-row {
+    background-color: rgba(107, 159, 179, 0.39);
+  }
+}
+
+.table-header-th {
+  text-align: center;
+  vertical-align: middle;
+  padding: 3px 0px;
+  }
+
+.table-data-cell {
+  text-align: center;
+  color: #475054;
+  vertical-align: middle;
+  font-weight: 300;
+  padding: 2px 4px;
+  font-size: 14px;
+
+  &.table-cell-center {
+    padding: 3px 8px;
+    }
+  }
+.table-cell-right{
+  text-align: right;
+}
+
+.table-header-th-basic {
+  position: relative;
+  padding: 1px;
+
+  > div {
+    display: inline-block;
+    }
+  }
+
+.table-header-th-basic-sort {
+  position: relative;
+  float: right;
+  opacity: 0.5;
+  cursor: pointer;
+
+  > div {
+    transform: scale(1.1);
+    position: absolute;
+    right: 2px;
+    top: 0px;
+
+    }
+
+  &.table-header-th-basic-sorted {
+    opacity: 1;
+    color: #eeeeee;
+    filter: drop-shadow(0px 1px 0px black);
+
+    }
+  }
+
+.hwt-cell-resizable-node {
+  cursor: auto;
+  user-select: none;
+  width: 30px;
+  position: absolute;
+  top: 1px;
+  right: -15px;
+  height: 100%;
+  background: transparent;
+  z-index: 500;
+
+  .hwt-cell-resizable-node-holder {
+    width: 5px;
+    height: 100%;
+    background: transparent;
+    }
+
+  &:hover {
+    .hwt-cell-resizable-node-holder {
+      background: #bbb;
+      }
+    }
+
+  &.active-resize {
+    cursor: col-resize;
+
+    &:hover {
+      .hwt-cell-resizable-node-holder {
+        background: #333;
+        }
+      }
+
+    }
+  }
+
+.table-scrollable {
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding: 5px 0px;
+
+  table {
+    position: relative;
+
+    th {
+      position: sticky;
+      top: -6px;
+      background: linear-gradient(to bottom, #f8f8f8 27%, rgba(228, 227, 227, 1) 67%);
+      z-index: 501;
+    }
+  }
+
+}
+
+
+.table-root-ancestor  {
+  outline: none;
+}

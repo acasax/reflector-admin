@@ -1,0 +1,45 @@
+fragment userDetails on User {
+    id
+    nickname
+    userName
+    image
+    description
+    role
+    createdAt
+    updatedAt
+}
+
+fragment categoryDetails on Category {
+    id
+    name
+    description
+    createdAt
+    updatedAt
+}
+
+fragment articleImgVideoDetails on ArticleImgVideo {
+    id
+    url
+    type
+    articleId
+    createdAt
+    updatedAt
+}
+
+fragment articleDetails on Article {
+    id
+    header
+    content
+    link
+    useLink
+    categoryId
+    userId
+    createdAt
+    updatedAt
+    category{
+        ...categoryDetails
+    }
+    articleImgVideo{
+        ...articleImgVideoDetails
+    }
+}
